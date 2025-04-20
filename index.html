@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYUAD Marketplace</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">NYUAD Marketplace</span>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>NYUAD's Premier</h1>
+                <div class="animated-text">
+                    <span class="text-slider">Student Marketplace</span>
+                </div>
+                <p class="subtitle">Where Style Meets Affordability</p>
+                <div class="value-props">
+                    <div class="value-prop">
+                        <i class="fas fa-tag"></i>
+                        <span>Exclusive Student Deals</span>
+                    </div>
+                    <div class="value-prop">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Trusted Community</span>
+                    </div>
+                    <div class="value-prop">
+                        <i class="fas fa-bolt"></i>
+                        <span>Quick & Easy Transactions</span>
+                    </div>
+                </div>
+            </div>
+            <div class="floating-objects">
+                <div class="floating-object">
+                    <img src="images/hoodie.png" alt="Hoodie">
+                </div>
+                <div class="floating-object">
+                    <img src="images/sneakers.png" alt="Shoes">
+                </div>
+                <div class="floating-object">
+                    <img src="images/yellow_dress.png" alt="Bag">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Grid -->
+    <main class="products-container">
+        <h2>Featured Items</h2>
+        <div class="products-grid" id="products-grid">
+            <!-- Products will be loaded dynamically from products.json -->
+        </div>
+    </main>
+
+    <!-- Floating Cart Button -->
+    <div class="floating-cart" id="floating-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 NYUAD Marketplace – Created by Melissa, Tarlan & Aknur</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

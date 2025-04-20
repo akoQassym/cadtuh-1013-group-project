@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - NYUAD Marketplace</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">NYUAD Marketplace</span>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html" class="active">Cart</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <main class="cart-container">
+        <h1>Your Shopping Cart</h1>
+        <form action="./cgi-bin/cart_form.py" method="post" class="cart-form">
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be dynamically loaded here -->
+                <div class="cart-item">
+                    <img src="images/placeholder.jpg" alt="Product Image">
+                    <div class="item-details">
+                        <h3>Product Name</h3>
+                        <p class="price">$XX.XX</p>
+                        <div class="quantity">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <h2>Order Summary</h2>
+                <div class="summary-item">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="netid">NetID:</label>
+                <input type="text" id="netid" name="netid" required>
+            </div>
+
+            <div class="form-group">
+                <label for="payment">Payment Method:</label>
+                <select id="payment" name="payment" required>
+                    <option value="cash">Cash</option>
+                    <option value="card">Card</option>
+                    <option value="bank_transfer">Bank Transfer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="delivery">Delivery Method:</label>
+                <select id="delivery" name="delivery" required>
+                    <option value="in_person">In Person</option>
+                    <option value="campus_delivery">Campus Delivery</option>
+                </select>
+            </div>
+
+            <button type="submit" class="checkout-btn">Proceed to Checkout</button>
+        </form>
+
+        <!-- Receipt Section -->
+        <div id="receipt" class="receipt" style="display: none;">
+            <h2>Order Receipt</h2>
+            <div class="receipt-content">
+                <div class="receipt-header">
+                    <h3>NYUAD Marketplace</h3>
+                    <p>Order Date: <span id="receipt-date"></span></p>
+                </div>
+                <div class="receipt-items" id="receipt-items">
+                    <!-- Items will be populated here -->
+                </div>
+                <div class="receipt-summary">
+                    <div class="summary-item">
+                        <span>Subtotal:</span>
+                        <span id="receipt-subtotal">AED 0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total:</span>
+                        <span id="receipt-total">AED 0.00</span>
+                    </div>
+                </div>
+                <div class="receipt-details">
+                    <h4>Order Details</h4>
+                    <p><strong>Name:</strong> <span id="receipt-name"></span></p>
+                    <p><strong>NetID:</strong> <span id="receipt-netid"></span></p>
+                    <p><strong>Payment Method:</strong> <span id="receipt-payment"></span></p>
+                    <p><strong>Delivery Method:</strong> <span id="receipt-delivery"></span></p>
+                </div>
+                <div class="receipt-footer">
+                    <p>Thank you for your purchase!</p>
+                    <button onclick="window.print()" class="print-btn">Print Receipt</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 NYUAD Marketplace – Created by Melissa, Tarlan & Aknur</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

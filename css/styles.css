@@ -823,3 +823,45 @@ footer {
         font-size: 1rem;
     }
 }
+
+
+
+/* Login styles */
+.login-container {
+    max-width: 400px;
+    margin: 8rem auto 2rem;
+    padding: 0 1rem;
+}
+
+.login-card {
+    background: var(--nyuad-white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.login-card h1 {
+    margin-bottom: 1.5rem;
+    color: var(--nyuad-violet);
+}
+
+.login-card .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.login-card .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--nyuad-violet);
+}
+
+.login-card .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--nyuad-gray);
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+

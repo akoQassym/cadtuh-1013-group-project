@@ -6,6 +6,7 @@ let cart = {
 
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
+    const loggedInUser = localStorage.getItem('loggedInUser');
     console.log('DOM Content Loaded'); // Debug log
     
     const mobileMenu = document.getElementById('mobile-menu');
@@ -14,6 +15,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load products
     loadProducts();
+
+    if (navMenu) {
+        if (loggedInUser) {
+            // Add Logout button
+            const logoutItem = document.createElement('li');
+            const logoutLink = document.createElement('a');
+            logoutLink.textContent = 'Logout';
+            logoutLink.href = '#';
+            logoutLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('loggedInUser');
+                window.location.href = 'index.html';
+            });
+            logoutItem.appendChild(logoutLink);
+            navMenu.appendChild(logoutItem);
+        } else {
+            // Add Login button
+            const loginItem = document.createElement('li');
+            const loginLink = document.createElement('a');
+            loginLink.textContent = 'Login';
+            loginLink.href = 'login.html';
+            loginLink.classList.add('login-btn');
+            loginItem.appendChild(loginLink);
+            navMenu.appendChild(loginItem);
+        }
+    }
+
+    // If on cart.html, block if not logged in
+    if (window.location.pathname.includes('cart.html') && !loggedInUser) {
+        alert('You must be logged in to access the cart.');
+        window.location.href = 'login.html';
+    }
 
     // Mobile menu functionality
     if (mobileMenu && navMenu) {

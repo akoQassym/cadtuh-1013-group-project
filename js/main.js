@@ -48,6 +48,12 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'login.html';
     }
 
+    // Check authentication for post.html
+    if (window.location.pathname.includes('post.html') && !loggedInUser) {
+        alert('You must be logged in to post items.');
+        window.location.href = 'login.html';
+    }
+
     // Mobile menu functionality
     if (mobileMenu && navMenu) {
         mobileMenu.addEventListener('click', function() {

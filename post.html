@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Item - NYUAD Marketplace</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">NYUAD Marketplace</span>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="post.html" class="active">Post Item</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="contact-container">
+        <h1>Post a New Item</h1>
+        <form id="postForm" class="post-form">
+            <div class="form-group">
+                <label for="name">Item Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price (AED):</label>
+                <input type="number" id="price" name="price" step="0.01" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Image URL:</label>
+                <input type="text" id="image" name="image" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="sweaters">Sweaters</option>
+                    <option value="jeans">Jeans</option>
+                    <option value="tops">Tops</option>
+                    <option value="jackets">Jackets</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="bags">Bags</option>
+                    <option value="sunglasses">Sunglasses</option>
+                    <option value="dresses">Dresses</option>
+                    <option value="skirts">Skirts</option>
+                    <option value="hats">Hats</option>
+                    <option value="jewelry">Jewelry</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Post Item</button>
+        </form>
+        <div id="message" class="message"></div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 NYUAD Marketplace – Created by Melissa, Tarlan & Aknur</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('postForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            fetch('./cgi-bin/post.py', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const messageDiv = document.getElementById('message');
+                if (data.status === 'success') {
+                    messageDiv.textContent = 'Item posted successfully! Redirecting...';
+                    messageDiv.style.color = 'green';
+                    setTimeout(() => window.location.href = 'index.html', 2000);
+                } else {
+                    messageDiv.textContent = 'Error: ' + data.message;
+                    messageDiv.style.color = 'red';
+                }
+            })
+            .catch(error => {
+                document.getElementById('message').textContent = 'An error occurred. Please try again.';
+                document.getElementById('message').style.color = 'red';
+            });
+        });
+    </script>
+</body>
+</html>
